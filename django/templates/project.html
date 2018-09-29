@@ -1,0 +1,113 @@
+<html>
+<head>
+  <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+  body {
+    background-color: rgb(255, 255, 51);
+}
+#content img {
+  float: left;
+}
+section {
+  float: left;
+  margin: 0 1.5%;
+  width: 30%;
+}
+
+
+</style>
+<script>
+function loadDoc() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      var resp = JSON.parse(this.responseText);	
+      document.getElementById("lane1").value = resp["lane1"];
+      document.getElementById("lane2").value = resp["lane2"];
+      document.getElementById("lane3").value = resp["lane3"];
+      document.getElementById("lane4").value = resp["lane4"];
+    }
+	
+  };
+  xhttp.open("GET", "/data", true);
+  xhttp.send();
+}
+</script>
+</head>
+
+
+<body onload="setInterval(loadDoc,5000);">
+
+<p style="text-align: center;">"AUTOMATIC TRAFFIC CONTROL SYSTEM"</p>
+<section>
+<p>
+<br>
+<br>
+<br>
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Right_arrow.svg/2000px-Right_arrow.svg.png" alt="left arrow" style="float:right;width:90px;height:42px;">
+<form>
+PHASE 1:<input type="textarea" id="lane1"  name="phase1" value="{{lane1}}"><br>
+</form>
+</p>
+<br>
+<br>
+<p>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<img src="http://freevector.co/wp-content/uploads/2011/08/60627-up-straight-arrow.png" alt="left arrow" style="float:right;width:90px;height:42px;">
+<form>
+PHASE 2:<input type="textarea" id="lane2" name="phase2" value="{{lane2}}"><br>
+</form>
+</p>
+
+
+</section>
+
+<section>
+<center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Street_intersection_diagram.svg/531px-Street_intersection_diagram.svg.png" alt="Traffic Junction" style="width:480px;height:480px;"></center>
+</section>
+<section>
+
+  <p  padding-right: 30px;>
+  <br>
+  <br>
+  <br>
+  <img src="https://maxcdn.icons8.com/Share/icon/Arrows//down_arrow1600.png" alt="left arrow" style="float:left;width:90px;height:42px;">
+  <form>
+  PHASE 3:<input type="textarea" id="lane3" name="phase3" value="{{lane3}}"><br>
+  </form>
+  </p>
+  <br>
+  <br>
+  <p>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/16965-200.png" alt="left arrow" style="float:left;width:90px;height:42px;">
+  <form>
+  PHASE 4:<input type="textarea" id="lane4" name="phase4" value="{{lane4}}"><br>
+  </form>
+  </p>
+
+
+
+
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,28 @@
+version: '2'
+services:
+ web:
+  build: .
+  expose:
+   - "8000"
+  volumes:
+   - ~/django:/code
+  depends_on:
+   - redis
+   - mongodb
+ redis:
+  image: redis:3.0
+  ports:
+   - '6379:6379'
+ nginx:
+  image: nginx:latest
+  ports:
+   - "80:8000"
+  volumes:
+   - ~/django:/code
+   - ./config:/etc/nginx/conf.d
+  depends_on:
+   - web
+ mongodb:
+  image: mongo:3.4
+  volumes:
+   - ./data:/data/db
